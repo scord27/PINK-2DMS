@@ -9,12 +9,19 @@ import numpy as np
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
+pythonicon = "resources/PINK_logo_transparent.gif"
+from PIL import Image, ImageTk
 
 class scan_estimate():
     def __init__(self):
         self.root=tk.Tk()
         self.root.title("Parameter estimator")
         self.root.geometry("450x250")
+        
+        photo_image = tk.PhotoImage(file=pythonicon)
+        print(type(photo_image))
+        self.root.wm_iconphoto(False, photo_image)
+        
         self.successful_scan=np.nan
         
         self.avilable_d26=[1e-5,7.5e-6,5e-6, 2.5e-6, 1.1e-6, 1e-6, 7.5e-7, 5e-7, 2.5e-7]
