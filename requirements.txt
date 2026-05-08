@@ -7,4 +7,4 @@ rdkit==2025.03.6
 psims==1.3.4
 scikit-learn==1.8.0
 matplotlib==3.10.9
-requests==2.33.1
+requests==2.33.1 
