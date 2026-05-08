@@ -16,7 +16,7 @@ import numpy as np
 from pymzml import run #M Kösters, J Leufken, S Schulze, K Sugimoto, J Klein, R P Zahedi, M Hippler, S A Leidel, C Fufezan; pymzML v2.0: introducing a highly compressed and seekable gzip format, Bioinformatics, doi: https://doi.org/10.1093/bioinformatics/bty046
 from scripts.import_DBs import import_DB
 #import csv
-pythonicon = "resources/PINK_logo_transparent.gif"
+pythonicon = "resources\\PINK_logo_transparent.gif"
 from PIL import Image, ImageTk
 from rdkit import Chem
 from rdkit.Chem import Draw #RDKit: Open-source cheminformatics. https://www.rdkit.org https://doi.org/10.5281/zenodo.591637
@@ -28,7 +28,7 @@ class read_mzML():
         self.root.geometry("1600x850")
         
         photo_image = tk.PhotoImage(file=pythonicon)
-        print(type(photo_image))
+        #print(type(photo_image))
         self.root.wm_iconphoto(False, photo_image)
         
         style=ttk.Style(self.root)

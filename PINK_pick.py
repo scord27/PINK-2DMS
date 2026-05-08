@@ -17,7 +17,7 @@ import pandas as pd
 #from PIL import ImageTk, Image
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 import matplotlib
-pythonicon = "resources/PINK_logo_transparent.gif"
+pythonicon = "resources\\PINK_logo_transparent.gif"
 import h5py
 import lmfit
 from scipy.optimize import curve_fit
@@ -29,7 +29,7 @@ class TwoDpeakpickergui():
         self.root.title("P.I.N.K pick")
         self.root.geometry("1600x850")
         photo_image = tk.PhotoImage(file=pythonicon)
-        print(type(photo_image))
+        #print(type(photo_image))
         self.root.wm_iconphoto(False, photo_image)
         
         style=ttk.Style(self.root)

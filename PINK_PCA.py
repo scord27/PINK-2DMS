@@ -14,7 +14,7 @@ from tkinter import *
 from tkinter import filedialog
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 import numpy as np
-pythonicon = "resources/PINK_logo_transparent.gif"
+pythonicon = "resources\\PINK_logo_transparent.gif"
 from PIL import Image, ImageTk
 from sklearn.decomposition import PCA
 import time
@@ -26,7 +26,7 @@ class whole_2d_PCA():
         self.root.geometry("1600x850")
         
         photo_image = tk.PhotoImage(file=pythonicon)
-        print(type(photo_image))
+        #print(type(photo_image))
         self.root.wm_iconphoto(False, photo_image)
         
         style=ttk.Style(self.root)

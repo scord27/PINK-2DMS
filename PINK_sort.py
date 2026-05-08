@@ -14,7 +14,7 @@ import pandas as pd
 from PIL import ImageTk, Image
 from scripts.exportmzml import exportasmzml
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
-pythonicon = "A:\\pinkpeak\\resources\\PINK_logo_transparent.gif"
+pythonicon = "resources\\PINK_logo_transparent.gif"
 
         
 class TwoDpeaksortergui():
@@ -23,7 +23,7 @@ class TwoDpeaksortergui():
         self.root.title("P.I.N.K sort")
         self.root.geometry("1600x850")
         photo_image = tk.PhotoImage(file=pythonicon)
-        print(type(photo_image))
+        #print(type(photo_image))
         self.root.wm_iconphoto(False, photo_image)
         
         #print(screen_height,screen_width)
