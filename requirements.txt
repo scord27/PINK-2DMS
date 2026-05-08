@@ -1,10 +1,8 @@
-lmfit
-numpy=1.26.4
-h5py
-scipy
-pymzml=2.5.10
-rdkit
-psims=1.3.4
-
-conda path
-conda install -n pinkgit conda-forge::lmfit numpy=1.26.4 h5py scipy=1.13.1 conda-forge::pymzml rdkit conda-forge::psims
+lmfit==1.3.4
+numpy==1.26.4
+h5py==3.16.0
+scipy==1.13.1
+pymzml==2.5.10
+rdkit==2025.03.6
+psims==1.3.4
+scikit-learn==1.8.0
