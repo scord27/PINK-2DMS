@@ -267,8 +267,6 @@ class whole_2d_PCA():
         print(np.shape(self.flat_array))
         self.axis0=self.flatten[1]
         self.xyaxis=self.flatten[2]
-        flat_axis_save=np.swapaxes(self.flatten[0],0,1)
-        pd.DataFrame(flat_axis_save).to_csv("resources\\flat_PCA_file.csv", header=self.nicknamelist,index_label=self.flatten[2])
         #print(self.axis0)
         self.PC=PCA_actuallydoingit(self.flat_array,self.axis0)
         self.PCdf=self.PC[0]
