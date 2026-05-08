@@ -307,71 +307,7 @@ class TwoDpeakpickergui():
         elif self.importtypepre.get() =="T2D":
             print("not written yet, go bug anna about it if you want this feature")
             exit()
-# =============================================================================
-#             self.filename=filedialog.askopenfilename(defaultextension=".data", filetypes=[("T2D Files", "*.data")])
-#             self.methodfile=filedialog.askopenfilename()
-#             with open(self.filename, mode='rb') as file: # b is important -> binary
-#                fileContent = file.read()
-#             with open((str(self.methodfile)),"r") as f:
-#                 lines=f.readlines()
-#                 linecounter=0
-#                 for line in lines:
-#                     linecounter=linecounter+1
-#                     if line.find('<param name="IN_26"><value>') != -1:
-#                         line=line.strip('<param name="IN_26">')
-#                         line=line.strip('</value></param>\n')
-#                         IN_26=float(line)
-#                     if line.find('<param name="L_20"><value>') != -1:
-#                         line=line.strip('<param name="L_20">')
-#                         line=line.strip('</value></param>\n')
-#                         self.size_2D=float(line)
-#                     if line.find('<param name="ML1"><value>') != -1:
-#                         line=line.strip('<param name="ML1">')
-#                         line=line.strip('</value></param>\n')
-#                         ML1=float(line)
-#                     if line.find('<param name="ML2"><value>') != -1:
-#                         line=line.strip('<param name="ML2">')
-#                         line=line.strip('</value></param>\n')
-#                         ML2=float(line)
-#                     if line.find('<param name="ML3"><value>') != -1:
-#                         line=line.strip('<param name="ML3">')
-#                         line=line.strip('</value></param>\n')
-#                         ML3=float(line)
-#                     if line.find('<param name="EXC_Freq_Low"><value>') != -1:
-#                         line=line.strip('<param name="EXC_Freq_Low">')
-#                         line=line.strip('</value></param>\n')
-#                         EXC_Freq_Low=float(line)
-#                     if line.find('<param name="TD"><value>') != -1:
-#                         line=line.strip('<param name="TD">')
-#                         line=line.strip('</value></param>\n')
-#                         TD=float(line)
-#                     if line.find('<param name="FR_low"><value>') != -1:
-#                         line=line.strip('<param name="FR_low">')
-#                         line=line.strip('</value></param>\n')
-#                         FR_low=float(line)
-#                     if line.find('<param name="EXC_Freq_High"><value>') != -1:
-#                         line=line.strip('<param name="EXC_Freq_High">')
-#                         line=line.strip('</value></param>\n')
-#                         EXC_Freq_High=float(line)
-#             #print(IN_26)
-#             lowylist=in_26_mz(9.4,IN_26,EXC_Freq_Low)
-#             lowy=lowylist[0]
-#             lowx=vc_mz(9.4,EXC_Freq_High,EXC_Freq_Low)
-#             high=vc_mz(9.4,FR_low,EXC_Freq_Low)
-#             #print(lowy)
-#             self.ML1entry.insert(0, str(ML1))
-#             self.ML2entry.insert(0, str(ML2))
-#             self.ML3entry.insert(0, str(ML3))
-#             self.lowxinput=tk.Label(self.pickvalues,text="Low x mass is m/z "+str(lowx))
-#             self.lowxinput.grid(row=11, column=5,padx=5,pady=5)
-#             self.lowyinput=tk.Label(self.pickvalues,text="Low y mass is m/z "+str(lowy))
-#             self.lowyinput.grid(row=11, column=6,padx=5,pady=5)
-#             self.highinput=tk.Label(self.pickvalues,text="High mass is m/z "+str(high))
-#             self.highinput.grid(row=12, column=5,padx=5,pady=5)
-#             self.sizeinput=tk.Label(self.pickvalues,text="The number of scans is "+str(self.size_2D))
-#             self.sizeinput.grid(row=12, column=6,padx=5,pady=5)
-#             self.root.update_idletasks()
-# =============================================================================
+
         else:
             #self.infile=filedialog.askopenfilename(defaultextension=".csv", filetypes=[("csv", "*.csv")])
             print("not written yet, go bug anna about it if you want this feature")
