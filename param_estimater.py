@@ -132,53 +132,12 @@ class scan_estimate():
         self.answerlabel2=tk.Label(self.frame2,text=str(self.answer)+" is the maximum d_26 you can use")
         self.answerlabel2.grid(row=6, column=0, padx=5,pady=5, columnspan=2)
 
-def model_5_cut_off(scans,mz):
-    res=((81.31265743990187*scans)/mz)-2.26990060802126
-    FWHM=mz/res
-    C1=(np.log(0.05)/-4*np.log(2))
-    #print(FWHM)
-    five_percent_width=2*((np.sqrt(C1*(FWHM**2))+mz)-mz)
-    #print(five_percent_width)
-    five_cut_off=abs(five_percent_width)
-    return five_cut_off
-
-def model_95_cut_off(scans,mz,b0,ind):
-    res=(8.4237e6*((scans*b0*ind)/mz))-2.2623
-    FWHM=mz/res
-    C1=(np.log(0.95)/-4*np.log(2))
-    #print(FWHM)
-    ninetyfive_percent_width=2*((np.sqrt(C1*(FWHM**2))+mz)-mz)
-    #print(five_percent_width)
-    ninetyfive_cut_off=abs(ninetyfive_percent_width)
-    return ninetyfive_cut_off
-
-def model_97_5_cut_off(scans,mz,b0,ind):
-    res=(8.4237e6*((scans*b0*ind)/mz))-2.2623
-    FWHM=mz/res
-    C1=(np.log(0.975)/-4*np.log(2))
-    #print(FWHM)
-    ninetysevenfive_percent_width=2*((np.sqrt(C1*(FWHM**2))+mz)-mz)
-    #print(five_percent_width)
-    ninetysevenfive_cut_off=abs(ninetysevenfive_percent_width)
-    return ninetysevenfive_cut_off
-
 def model_sigmacutoff(scans,mz,b0,ind):
     res=(8.4237e6*((scans*b0*ind)/mz))-2.2623
     FWHM=mz/res
     sigma=FWHM/(2*np.sqrt(2*np.log(2)))
     return sigma
 
-def model_halfsigmacutoff(scans,mz,b0,ind):
-    res=(8.4237e6*((scans*b0*ind)/mz))-2.2623
-    FWHM=mz/res
-    sigma=FWHM/(2*np.sqrt(2*np.log(2)))
-    return (sigma/2)
-
-def model_quartsigmacutoff(scans,mz,b0,ind):
-    res=(8.4237e6*((scans*b0*ind)/mz))-2.2623
-    FWHM=mz/res
-    sigma=FWHM/(2*np.sqrt(2*np.log(2)))
-    return (sigma/4)
 
 def in_26_mz(B0,in_26,freq_corr):
     sf=1/in_26
