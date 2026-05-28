@@ -207,6 +207,7 @@ class TwoDpeakpickergui():
             self.root.update_idletasks()
             self.nameprint=tk.Label(self.homeframe,text=self.dirname)
             self.nameprint.grid(row=0,column=0,padx=5,pady=5)
+            f.close()
         
         elif self.importtypepre.get() =="SPIKE":
             self.filename=filedialog.askopenfilename(defaultextension=".msh5", filetypes=[("SPIKE Files", "*.msh5")])
@@ -304,6 +305,7 @@ class TwoDpeakpickergui():
             #plt.show()
             self.nameprint=tk.Label(self.homeframe,text=self.filename)
             self.nameprint.grid(row=0,column=0,padx=5,pady=5)
+            f.close()
         elif self.importtypepre.get() =="T2D":
             print("not written yet, go bug anna about it if you want this feature")
             exit()
@@ -544,10 +546,10 @@ class TwoDpeakpickergui():
         if self.modeltype.get() =="Local max":
             for i in range (0,len(self.x_localmax)):
                 self.results.append([self.x_localmax[i],self.y_localmax[i],self.z_localmax[i]])
-        if self.modeltype.get() =="2D Gauss":
+        elif self.modeltype.get() =="2D Gauss":
             for i in range (0,len(self.slicex)):
                 self.results.append([self.slicex[i],self.slicey[i],self.slicez[i]])
-        if self.modeltype.get() =="3D Gauss":
+        elif self.modeltype.get() =="3D Gauss":
             for i in range (0,len(self.xcentres)):
                 self.results.append([self.xcentres[i],self.ycentres[i],self.zcentres[i]])
         self.csvfile=filedialog.asksaveasfile(defaultextension=".csv",filetypes=[("CSV Files", "*.csv")])

@@ -576,6 +576,7 @@ class TwoDpeaksortergui():
             self.fragmentmass=reader["X"]
             self.precursormass=reader["Y"]
             self.intensity=reader["Z"]
+        f.close()
         print("imported "+str(len(self.fragmentmass))+" peaks")
         self.TSon=self.TS.get()
         if self.TSon==1:

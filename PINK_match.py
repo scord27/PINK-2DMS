@@ -364,6 +364,7 @@ class read_mzML():
         self.importcounter=self.importcounter+1
         with open(str(self.infile),"r") as f:
             self.data = f.read()
+        f.close()
         for item in self.precursors.get_children():
             self.precursors.delete(item)
         for item in self.DBprecursors.get_children():

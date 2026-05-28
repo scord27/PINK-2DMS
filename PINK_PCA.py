@@ -40,29 +40,29 @@ class whole_2d_PCA():
         
         nb.pack(expand=1, fill="both")
         
-        self.contourplot=plt.figure()
+        self.contourplot=plt.figure(figsize=(1, 2), dpi=75)
         self.contourcanvas = FigureCanvasTkAgg(self.contourplot, master=self.importtab)
         self.contourcanvas.get_tk_widget().grid(row=0,column=1,padx=0,pady=0,rowspan=6)
         self.contourtoolbar = NavigationToolbar2Tk(self.contourcanvas,self.importtab, pack_toolbar=False)
         self.contourtoolbar.update()
         self.contourtoolbar.grid(row=7,column=1,padx=0,pady=0)
         
-        self.PCAplot=plt.figure()
+        self.PCAplot=plt.figure(figsize=(1, 2), dpi=75)
         self.twoDPCAcanvas = FigureCanvasTkAgg(self.PCAplot, master=self.resultstab)
         self.twoDPCAcanvas.get_tk_widget().grid(row=0,column=0,padx=0,pady=0)
         self.twoDPCAtoolbar = NavigationToolbar2Tk(self.twoDPCAcanvas,self.resultstab, pack_toolbar=False)
         self.twoDPCAtoolbar.update()
         self.twoDPCAtoolbar.grid(row=2,column=0,padx=0,pady=0)
-        self.scree_plot=plt.figure()
+        self.scree_plot=plt.figure(figsize=(1, 2), dpi=75)
         self.screecanvas = FigureCanvasTkAgg(self.scree_plot, master=self.resultstab)  
         self.screecanvas.get_tk_widget().grid(row=0,column=1,padx=0,pady=0)
-        self.threePCAplot=plt.figure()
+        self.threePCAplot=plt.figure(figsize=(1, 2), dpi=75)
         self.threeDPCAcanvas = FigureCanvasTkAgg(self.threePCAplot, master=self.resultstab)
         self.threeDPCAcanvas.get_tk_widget().grid(row=1,column=1,padx=0,pady=0)
         self.threeDPCAtoolbar = NavigationToolbar2Tk(self.threeDPCAcanvas,self.resultstab, pack_toolbar=False)
         self.threeDPCAtoolbar.update()
         self.threeDPCAtoolbar.grid(row=2,column=1,padx=0,pady=0)
-        self.loadplot=plt.figure()
+        self.loadplot=plt.figure(figsize=(1, 2), dpi=75)
         self.loadcanvas = FigureCanvasTkAgg(self.loadplot, master=self.resultstab)
         self.loadcanvas.get_tk_widget().grid(row=0,column=2,padx=0,pady=0,rowspan=2)
         self.loadtoolbar = NavigationToolbar2Tk(self.loadcanvas,self.resultstab, pack_toolbar=False)
@@ -207,6 +207,7 @@ class whole_2d_PCA():
         t1=time.time()
         print(str(t1-t0)+" s to import")
         plt.close()
+        f.close()
         
     def unique_popup_window(self):
         window = tk.Toplevel()
@@ -424,14 +425,14 @@ def PCA_actuallydoingit(ar,labels):
     return principalDf,explained_varience,singularvalues,loadings
 
 def PCA_2d_plot(PC1,PC2,Labels,explained_varience):
-    fig,ax=plt.subplots()
+    fig,ax=plt.subplots(dpi=75)
     ax.scatter(PC1,PC2,color="black")
     for i, txt in enumerate(Labels):
         ax.annotate(txt, (PC1[i], PC2[i]))
     ax.set_xlabel("PC1"+str(round(explained_varience[0],2)*100)+"%")
     ax.set_ylabel("PC2"+str(round(explained_varience[1],2)*100)+"%")
-    fig.set_figheight(12)
-    fig.set_figwidth(12)
+    fig.set_figheight(10)
+    fig.set_figwidth(8)
     return fig
 
 def scree_plot(explained_varience,singular_values,PCA_list):
@@ -442,9 +443,9 @@ def scree_plot(explained_varience,singular_values,PCA_list):
         else:
             cumvar=cumulative_variance[-1]+(explained_varience[i]*100)
             cumulative_variance.append(cumvar)
-    fig, ax1 = plt.subplots()
-    fig.set_figheight(6)
-    fig.set_figwidth(6)
+    fig, ax1 = plt.subplots(dpi=75)
+    fig.set_figheight(4)
+    fig.set_figwidth(4)
     ax2 = ax1.twinx()
     ax1.set_xlabel('Principal componants', size =20)
     ax1.set_ylabel('Eigenvalue', size =20)
@@ -463,8 +464,8 @@ def PCA_3d_plot(PC1,PC2,PC3,Labels,explained_varience):
     ax.set_zlabel("PC3 "+str(round(explained_varience[2],3)*100)+"%")
     for i, txt in enumerate(Labels):
         ax.text(PC1[i], PC2[i], PC3[i],txt)
-    fig.set_figheight(6)
-    fig.set_figwidth(6)
+    fig.set_figheight(4)
+    fig.set_figwidth(4)
     return fig
 
 def loading_plot(loadings,explained_varience,labels,scaling):
@@ -486,7 +487,7 @@ def loading_plot(loadings,explained_varience,labels,scaling):
     loadingsdf=pd.DataFrame({"loadingsx":loadpc1,"loadingsy":loadpc2,"labels":labels,"sum":addedloadings})
     loadingsdf=loadingsdf.sort_values("sum")
     print("sorted loadings")
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(dpi=75)
     ax.set_xlabel("PC1 "+str(round(explained_varience[0],3)*100)+"%")
     ax.set_ylabel("PC2 "+str(round(explained_varience[1],3)*100)+"%")
     for i in range (0,len(loadingsdf.loc[:,"loadingsx"])):
@@ -499,6 +500,8 @@ def loading_plot(loadings,explained_varience,labels,scaling):
                 txt=loadingsdf.loc[i,"labels"]
                 ax.annotate(txt, (round(loadingsdf.loc[i,"loadingsx"],4), round(loadingsdf.loc[i,"loadingsy"],4)))
             #print (loadingsdf.iloc[i,0],loadings[i][0])
+    fig.set_figheight(4)
+    fig.set_figwidth(4)
     return fig
 
     
