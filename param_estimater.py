@@ -24,7 +24,7 @@ class scan_estimate():
         
         self.successful_scan=np.nan
         
-        self.avilable_d26=[1e-5,7.5e-6,5e-6, 2.5e-6, 1.1e-6, 1e-6, 7.5e-7, 5e-7, 2.5e-7]
+        self.avilable_d26=[1e-5,7.5e-6,5e-6,4e-6,3e-6, 2.5e-6, 1.1e-6, 1e-6, 7.5e-7, 5e-7, 2.5e-7]
             
         style=ttk.Style(self.root)
         style.configure("TFrame", background="#E69", foreground="white")

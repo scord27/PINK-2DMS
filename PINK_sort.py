@@ -869,9 +869,7 @@ class TwoDpeaksortergui():
     def clearcomparison(self):
         self.counter=0
         self.comparisonlist=[]
-        self.compareplot=plt.figure(figsize=(19.5,11))
-        self.comparecanvas = FigureCanvasTkAgg(self.compareplot, master=self.comparisonframe)  
-        self.comparecanvas.get_tk_widget().grid(row=0, column=0,padx=0,pady=0)
+        self.comparecanvas.delete(self.comparecanvas)
         
     def replot_compare(self):
         self.ymaxcompare=float(self.ymaxcompareentry.get())

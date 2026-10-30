@@ -328,9 +328,9 @@ class TwoDpeakpickergui():
         for item in self.TwoDcanvas.get_tk_widget().find_all():
             self.TwoDcanvas.get_tk_widget().delete(item)
         self.TwoDtoolbar.destroy()
-        if self.datadec[0]==100:
-            self.datadec=decimate(self.data,10,axis=1)
-            self.fragmentaxisdec=decimate(self.fragmentaxis,10)
+        if type(self.datadec[0])==int:
+            self.datadec=decimate(self.data,5,axis=1)
+            self.fragmentaxisdec=decimate(self.fragmentaxis,5)
         print(np.shape(self.datadec))
         self.contour=contour_plot(self.fragmentaxisdec,self.precursoraxis,self.datadec,self.highmass)
         self.TwoDcanvas = FigureCanvasTkAgg(self.contour, master=self.plotframe)  
@@ -526,8 +526,9 @@ class TwoDpeakpickergui():
             try:
                 self.datadec=decimate(self.data,10,axis=1)
                 self.fragmentaxisdec=decimate(self.fragmentaxis,10)
-                self.combinedplot=scatter_and_contour_plot_allfit(self.fragmentaxisdec,self.precursoraxis,self.datadec,self.x_localmax,self.y_localmax,self.z_localmax,self.slicex,self.slicey,self.slicez,self.xcentres,self.ycentres,self.zcentre,self.highmass)
-            except:
+                self.combinedplot=scatter_and_contour_plot_allfit(self.fragmentaxisdec,self.precursoraxis,self.datadec,self.x_localmax,self.y_localmax,self.z_localmax,self.slicex,self.slicey,self.slicez,self.xcentres,self.ycentres,self.zcentres,self.highmass)
+            except Exception as error:
+                print(type(error).__name__,'-',error)
                 self.combinedplot=scatter_plot_localand2fit(self.fragmentaxis,self.precursoraxis,self.data,self.x_localmax,self.y_localmax,self.z_localmax,self.slicex,self.slicey,self.slicez,self.xcentres,self.ycentres,self.zcentres)
         else:
             self.combinedplot=scatter_plot_localand2fit(self.fragmentaxis,self.precursoraxis,self.data,self.x_localmax,self.y_localmax,self.z_localmax,self.slicex,self.slicey,self.slicez,self.xcentres,self.ycentres,self.zcentres)
@@ -579,13 +580,14 @@ def contour_plot(x,y,array,highmass):
 def scatter_and_contour_plot(x,y,array,x_lm,y_lm,z_lm,highmass):
     indexlist=[]
     red_x=[]
+    levels=[1E7,5E7,1E8,5E8,1E9]
     cm = matplotlib.colormaps["RdPu"]
     red_array=array#[:,indexlist]
     #red_array_log=np.log(red_array)
     fig,ax=plt.subplots(dpi=75)
     X, Y = np.meshgrid(x, y)
     #cm = matplotlib.colormaps["RdPu"]
-    sc =plt.contour(X, Y,red_array)
+    sc =plt.contour(X, Y,red_array,levels=levels)
     ax.scatter(x_lm, y_lm, c=np.log(z_lm), s=20, cmap=cm)
     ax.set_ylim([min(y), max(y)+25])
     ax.set_xlim([min(x), highmass])
@@ -638,6 +640,7 @@ def scatter_plot_localand2fit(x,y,array,x_lm,y_lm,z_lm,x_s,y_s,z_s,x_f,y_f,z_f):
     #red_array_log=np.log(red_array)
     fig,ax=plt.subplots(dpi=75)
     cm = matplotlib.colormaps["RdPu"]
+    cm2 = matplotlib.colormaps["OrRd"]
     ax.scatter(x_lm, y_lm, c=np.log(z_lm), s=10)
     ax.scatter(x_s, y_s, c=np.log(z_s), s=10, cmap=cm, marker="P")
     ax.scatter(x_f, y_f, c=np.log(z_f), s=10, cmap=cm, marker="D")
@@ -654,12 +657,13 @@ def scatter_and_contour_plot_allfit(x,y,array,x_lm,y_lm,z_lm,x_s,y_s,z_s,x_f,y_f
     indexlist=[]
     red_x=[]
     cm = matplotlib.colormaps["RdPu"]
+    levels=[5E6,1E7,5E7,1E8,5E8,1E9]
     red_array=array#[:,indexlist]
     #red_array_log=np.log(red_array)
     fig,ax=plt.subplots(dpi=75)
     X, Y = np.meshgrid(x, y)
     #cm = matplotlib.colormaps["RdPu"]
-    sc =plt.contour(X, Y,red_array)
+    sc =plt.contour(X, Y,red_array,levels=levels)
     ax.scatter(x_lm, y_lm, c=np.log(z_lm), s=10, cmap=cm)
     ax.scatter(x_s, y_s, c=np.log(z_s), s=10, cmap=cm, marker="P")
     ax.scatter(x_f, y_f, c=np.log(z_f), s=10, cmap=cm, marker="X")
