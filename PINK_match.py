@@ -4,6 +4,23 @@ Created on Thu May 9 13:21:02 2024
 
 @author: lwg513
 """
+
+"""Peak INterpretation via picKing (P.I.N.K) Match for spectral matching and interpretation of MS2 spectra extracted from 2DMS peak lists
+    Copyright (C) 2026  Anna Cordiner, Tony Larson, Jackie Mosely, University of York
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>."""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import tkinter as tk
